@@ -34,17 +34,17 @@ header {
   left: 0;
   width: 100%;
   z-index: 2;
-  padding: 15px 40px;
+  padding: 10px 20px;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
   background: rgba(0, 0, 0, 0.9);
   opacity: 0;
   animation: fadeIn 1s ease forwards 1s;
-  gap: 20px;
 }
 #logo {
-  width: 100px;
+  width: 80px;
   opacity: 0.5;
   transition: transform 0.3s ease;
 }
@@ -54,13 +54,12 @@ header {
 nav {
   display: flex;
   align-items: center;
-  margin: 0;
 }
 nav a {
   color: #fff;
-  margin: 0 15px;
+  margin: 0 10px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   transition: color 0.3s ease;
 }
@@ -71,20 +70,22 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 5px;
 }
 #connectButton, #disconnectButton {
   background: #FF4500;
   color: #fff;
-  padding: 10px 25px;
+  padding: 8px 20px;
   border: 1px solid #FF6347;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   transition: background 0.3s ease, transform 0.1s ease, opacity 0.3s ease;
   opacity: 0;
   animation: fadeInButton 1s ease forwards 1.5s;
-  margin-bottom: 5px;
+  width: 100%;
+  max-width: 200px;
 }
 #connectButton:hover, #disconnectButton:hover {
   background: #E03E00;
@@ -102,7 +103,7 @@ nav a:hover {
   to { opacity: 1; }
 }
 #walletText, #resultText {
-  font-size: 14px;
+  font-size: 12px;
   margin: 5px 0;
   color: #ccc;
 }
@@ -111,11 +112,11 @@ nav a:hover {
   align-items: center;
 }
 .social-icon {
-  width: 30px;
+  width: 24px;
   filter: brightness(0.8) contrast(1.2);
   border: 1px solid #FF4500;
   border-radius: 50%;
-  padding: 5px;
+  padding: 4px;
   transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
 }
 .social-icon:hover {
@@ -134,53 +135,58 @@ nav a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
   opacity: 0;
   animation: fadeIn 1s ease forwards 2s;
 }
 .hero-content {
   background: rgba(26, 26, 26, 0.9);
-  padding: 40px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(255, 69, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
 }
 .fomo {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 #slotsText, #countdownText {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 700;
-  margin: 10px 0;
+  margin: 8px 0;
   color: #fff;
 }
 .fomo-message h3 {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 700;
   color: #fff;
-  margin: 10px 0;
+  margin: 8px 0;
 }
 .fomo-message p {
-  font-size: 18px;
+  font-size: 16px;
   color: #ccc;
   margin: 5px 0;
 }
 .whitelist-note {
-  font-size: 16px;
+  font-size: 14px;
   color: #ccc;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 .whitelist {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 #payButton {
   background: #FF4500;
   color: #fff;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   transition: background 0.3s ease, transform 0.1s ease;
+  width: 100%;
+  margin-top: 10px;
 }
 #payButton:hover {
   background: #E03E00;
@@ -191,58 +197,54 @@ nav a:hover {
   cursor: not-allowed;
 }
 #whitelistForm {
-  margin: 20px 0;
-  padding: 15px;
+  margin: 15px 0;
+  padding: 10px;
   border: 1px solid #FF6347;
   border-radius: 5px;
 }
 #whitelistForm select {
-  padding: 10px;
-  margin-right: 10px;
+  padding: 8px;
+  margin-bottom: 10px;
   background: #222;
   color: #fff;
   border: 1px solid #fff;
   border-radius: 5px;
-  width: 200px;
+  width: 100%;
+}
+#exclusiveMessage {
+  font-size: 16px;
+  line-height: 1.4;
 }
 .content-section {
   position: relative;
   z-index: 1;
-  padding: 60px 20px;
+  padding: 40px 15px;
   background: rgba(26, 26, 26, 0.7);
   opacity: 0;
   animation: fadeIn 1s ease forwards 2.5s;
 }
 .content-section h2 {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 700;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   color: #fff;
 }
 .content-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 100%;
   margin: 0 auto;
 }
-.about-grid {
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 40px;
-}
 .about-grid .content-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  min-height: 500px;
+  min-height: auto;
 }
 .about-image {
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
   border-radius: 10px;
   border: 2px solid #FF4500;
-  margin: 0 auto 20px;
+  margin: 0 auto 15px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .about-image:hover {
@@ -250,12 +252,12 @@ nav a:hover {
   box-shadow: 0 0 15px rgba(255, 69, 0, 0.5);
 }
 .tokenomics-grid {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 .pie-chart {
   position: relative;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   background: conic-gradient(
     #FF4500 0% 35%,
@@ -271,8 +273,8 @@ nav a:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   background: #1a1a1a;
   border-radius: 50%;
   transform: translate(-50%, -50%);
@@ -283,13 +285,12 @@ nav a:hover {
   text-align: left;
 }
 .tokenomics-list li {
-  font-size: 18px;
+  font-size: 16px;
   color: #ccc;
-  margin: 15px 0;
+  margin: 10px 0;
 }
 .tokenomics-list ul {
-  list-style: none;
-  padding-left: 20px;
+  padding-left: 15px;
 }
 .tokenomics-label {
   font-weight: 700;
@@ -305,7 +306,7 @@ nav a:hover {
 }
 .audit-card {
   background: rgba(255, 69, 0, 0.1);
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   border: 1px solid transparent;
   border-image: linear-gradient(to right, #FF4500, #FF6347) 1;
@@ -317,28 +318,28 @@ nav a:hover {
 .audit-score {
   color: #FF4500;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
 }
 .audit-details {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  margin-top: 15px;
 }
 .audit-info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 .audit-images {
   display: flex;
-  gap: 15px;
   flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
 .audit-image {
   width: 100%;
-  max-width: 250px;
+  max-width: 200px;
   border-radius: 5px;
   border: 1px solid #FF4500;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -348,19 +349,18 @@ nav a:hover {
   box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
 }
 .audit-link {
-  display: inline-block;
   color: #FF4500;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 .audit-link:hover {
   color: #fff;
 }
 .audit-link-text {
-  padding: 8px 16px;
+  padding: 6px 12px;
   border: 1px solid #FF4500;
   border-radius: 5px;
   transition: background 0.3s ease;
@@ -372,9 +372,10 @@ nav a:hover {
 .audit-logo-container {
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
 .audit-logo {
-  width: 160px;
+  width: 120px;
   transition: transform 0.3s ease;
 }
 .audit-logo:hover {
@@ -383,21 +384,21 @@ nav a:hover {
 .audit-badge {
   background: #FF4500;
   color: #fff;
-  padding: 5px 10px;
+  padding: 4px 8px;
   border-radius: 5px;
-  font-size: 14px;
-  margin-left: 10px;
+  font-size: 12px;
+  margin-left: 8px;
 }
 .roadmap-timeline {
   position: relative;
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 15px 0;
 }
 .roadmap-timeline::before {
   content: '';
   position: absolute;
-  left: 20px;
+  left: 15px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -405,22 +406,22 @@ nav a:hover {
 }
 .roadmap-item {
   position: relative;
-  margin: 40px 0;
+  margin: 30px 0;
   display: flex;
   align-items: flex-start;
 }
 .roadmap-dot {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   background: #FF4500;
   border-radius: 50%;
-  border: 3px solid #1a1a1a;
-  margin-right: 20px;
+  border: 2px solid #1a1a1a;
+  margin-right: 15px;
   z-index: 1;
 }
 .roadmap-content {
   background: rgba(255, 69, 0, 0.1);
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
   border: 1px solid #FF6347;
   flex: 1;
@@ -430,8 +431,8 @@ nav a:hover {
 }
 .roadmap-content h3 {
   color: #FF4500;
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 .roadmap-content ul {
   list-style: none;
@@ -439,26 +440,26 @@ nav a:hover {
 }
 .roadmap-content li {
   color: #ccc;
-  font-size: 16px;
-  margin: 5px 0;
+  font-size: 14px;
+  margin: 4px 0;
 }
 @keyframes fadeInUp {
   to { opacity: 1; transform: translateY(0); }
 }
 .content-item {
   background: rgba(255, 69, 0, 0.1);
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   border: 1px solid #FF6347;
 }
 .content-item p {
-  font-size: 18px;
+  font-size: 16px;
   color: #ccc;
   line-height: 1.6;
 }
 .content-item a {
   color: #FF4500;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -468,12 +469,12 @@ nav a:hover {
 }
 .content-item img {
   width: 100%;
-  max-width: 350px;
+  max-width: 300px;
   border-radius: 5px;
 }
 .content-item .audit-logo {
-  width: 160px;
-  margin-top: 15px;
+  width: 120px;
+  margin-top: 10px;
 }
 #partners {
   animation-delay: 3s;
@@ -482,21 +483,21 @@ nav a:hover {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 20px;
 }
 .partner-item {
   background: rgba(255, 69, 0, 0.1);
-  padding: 20px;
+  padding: 15px;
   border-radius: 50%;
   border: 1px solid #FF6347;
 }
 .partner-item img[src="star_capital.png"] {
   background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
+  padding: 8px;
   border-radius: 50%;
 }
 #partners img {
-  width: 200px;
+  width: 150px;
   filter: grayscale(50%);
   transition: filter 0.3s ease;
 }
@@ -505,6 +506,140 @@ nav a:hover {
 }
 #partners p {
   color: #ccc;
-  font-size: 18px;
-  margin-top: 30px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+  }
+  #logo {
+    width: 60px;
+  }
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  nav a {
+    margin: 5px;
+    font-size: 14px;
+  }
+  .wallet-header {
+    width: 100%;
+    align-items: center;
+  }
+  #connectButton, #disconnectButton {
+    font-size: 14px;
+    padding: 8px 15px;
+    max-width: 100%;
+  }
+  #walletText, #resultText {
+    font-size: 10px;
+  }
+  .social-icon {
+    width: 20px;
+    padding: 3px;
+  }
+  .hero {
+    padding: 10px;
+    min-height: auto;
+  }
+  .hero-content {
+    padding: 15px;
+  }
+  #slotsText, #countdownText {
+    font-size: 20px;
+  }
+  .fomo-message h3 {
+    font-size: 18px;
+  }
+  .fomo-message p {
+    font-size: 14px;
+  }
+  .whitelist-note {
+    font-size: 12px;
+  }
+  #whitelistForm {
+    padding: 8px;
+  }
+  #whitelistForm select {
+    font-size: 14px;
+    padding: 6px;
+  }
+  #exclusiveMessage {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  #payButton {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+  .content-section {
+    padding: 30px 10px;
+  }
+  .content-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .content-item {
+    padding: 15px;
+  }
+  .content-item p {
+    font-size: 14px;
+  }
+  .about-image {
+    max-width: 250px;
+  }
+  .pie-chart {
+    width: 150px;
+    height: 150px;
+  }
+  .pie-chart::before {
+    width: 80px;
+    height: 80px;
+  }
+  .tokenomics-list li {
+    font-size: 14px;
+  }
+  .audit-card {
+    padding: 15px;
+  }
+  .audit-score {
+    font-size: 18px;
+  }
+  .audit-image {
+    max-width: 150px;
+  }
+  .audit-logo {
+    width: 100px;
+  }
+  .audit-badge {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+  .roadmap-timeline::before {
+    left: 10px;
+  }
+  .roadmap-dot {
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+  }
+  .roadmap-content {
+    padding: 10px;
+  }
+  .roadmap-content h3 {
+    font-size: 18px;
+  }
+  .roadmap-content li {
+    font-size: 12px;
+  }
+  #partners img {
+    width: 120px;
+  }
 }
