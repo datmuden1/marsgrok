@@ -36,7 +36,6 @@ header {
   z-index: 2;
   padding: 10px 20px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   background: rgba(0, 0, 0, 0.9);
@@ -65,47 +64,6 @@ nav a {
 }
 nav a:hover {
   color: #FF4500;
-}
-.wallet-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-}
-#connectButton, #disconnectButton {
-  background: #FF4500;
-  color: #fff;
-  padding: 8px 20px;
-  border: 1px solid #FF6347;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 800;
-  transition: background 0.3s ease, transform 0.1s ease, opacity 0.3s ease;
-  opacity: 0;
-  animation: fadeInButton 1s ease forwards 1.5s;
-  width: 100%;
-  max-width: 200px;
-}
-#connectButton:hover, #disconnectButton:hover {
-  background: #E03E00;
-  transform: scale(1.05);
-}
-#disconnectButton {
-  background: #666;
-  border: 1px solid #999;
-}
-#disconnectButton:hover {
-  background: #555;
-}
-@keyframes fadeInButton {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-#walletText, #resultText {
-  font-size: 12px;
-  margin: 5px 0;
-  color: #ccc;
 }
 .social-link {
   display: flex;
@@ -155,6 +113,48 @@ nav a:hover {
   font-weight: 700;
   margin: 8px 0;
   color: #fff;
+}
+.wallet-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin: 10px 0;
+}
+#connectButton, #disconnectButton {
+  background: #FF4500;
+  color: #fff;
+  padding: 8px 20px;
+  border: 1px solid #FF6347;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 800;
+  transition: background 0.3s ease, transform 0.1s ease, opacity 0.3s ease;
+  opacity: 0;
+  animation: fadeInButton 1s ease forwards 1.5s;
+  width: 100%;
+  max-width: 200px;
+}
+#connectButton:hover, #disconnectButton:hover {
+  background: #E03E00;
+  transform: scale(1.05);
+}
+#disconnectButton {
+  background: #666;
+  border: 1px solid #999;
+}
+#disconnectButton:hover {
+  background: #555;
+}
+@keyframes fadeInButton {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+#walletText, #resultText {
+  font-size: 12px;
+  margin: 5px 0;
+  color: #ccc;
 }
 .fomo-message h3 {
   font-size: 22px;
@@ -252,7 +252,14 @@ nav a:hover {
   box-shadow: 0 0 15px rgba(255, 69, 0, 0.5);
 }
 .tokenomics-grid {
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.tokenomics-grid .content-item {
+  flex: 1;
+  min-width: 200px;
 }
 .pie-chart {
   position: relative;
@@ -513,33 +520,32 @@ nav a:hover {
 /* Mobile Responsive */
 @media (max-width: 600px) {
   header {
-    flex-direction: column;
-    padding: 10px;
-    gap: 10px;
+    padding: 8px 10px;
+    justify-content: space-between;
+    align-items: center;
   }
   #logo {
     width: 60px;
   }
   nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 10px 0;
+    display: none; /* Hide nav by default */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px 0;
+  }
+  nav.active {
+    display: flex;
   }
   nav a {
-    margin: 5px;
+    margin: 5px 0;
     font-size: 14px;
   }
-  .wallet-header {
-    width: 100%;
-    align-items: center;
-  }
-  #connectButton, #disconnectButton {
-    font-size: 14px;
-    padding: 8px 15px;
-    max-width: 100%;
-  }
-  #walletText, #resultText {
-    font-size: 10px;
+  .social-link {
+    margin-left: auto;
   }
   .social-icon {
     width: 20px;
@@ -554,6 +560,17 @@ nav a:hover {
   }
   #slotsText, #countdownText {
     font-size: 20px;
+  }
+  .wallet-header {
+    margin: 8px 0;
+  }
+  #connectButton, #disconnectButton {
+    font-size: 14px;
+    padding: 8px 15px;
+    max-width: 100%;
+  }
+  #walletText, #resultText {
+    font-size: 10px;
   }
   .fomo-message h3 {
     font-size: 18px;
@@ -595,16 +612,24 @@ nav a:hover {
   .about-image {
     max-width: 250px;
   }
+  .tokenomics-grid {
+    flex-direction: row;
+    align-items: center;
+  }
   .pie-chart {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
   }
   .pie-chart::before {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
   }
   .tokenomics-list li {
-    font-size: 14px;
+    font-size: 12px;
+    margin: 5px 0;
+  }
+  .tokenomics-list ul {
+    padding-left: 10px;
   }
   .audit-card {
     padding: 15px;
