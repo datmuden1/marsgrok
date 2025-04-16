@@ -22,6 +22,15 @@ const ABI = [
 
 let connectedWallet = null;
 
+// Hamburger Menu Toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburgerIcon = document.querySelector('.hamburger-icon');
+  const navMenu = document.querySelector('#nav-menu');
+  hamburgerIcon.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+});
+
 // Connect Wallet
 document.getElementById('connectButton').addEventListener('click', async () => {
   console.log("Connect Wallet clicked");
