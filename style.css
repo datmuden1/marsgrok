@@ -34,7 +34,7 @@ header {
   left: 0;
   width: 100%;
   z-index: 2;
-  padding: 8px 10px;
+  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,7 +43,7 @@ header {
   animation: fadeIn 1s ease forwards 1s;
 }
 #logo {
-  width: 60px;
+  width: 100px;
   opacity: 0.5;
   transition: transform 0.3s ease;
 }
@@ -51,23 +51,14 @@ header {
   transform: scale(1.1);
 }
 nav {
-  display: none; /* Hide nav by default on mobile */
-  flex-direction: column;
-  position: absolute;
-  top: 50px;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  padding: 10px 0;
-}
-nav.active {
   display: flex;
+  align-items: center;
 }
 nav a {
   color: #fff;
-  margin: 5px 0;
+  margin: 0 15px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 500;
   transition: color 0.3s ease;
 }
@@ -79,11 +70,11 @@ nav a:hover {
   align-items: center;
 }
 .social-icon {
-  width: 20px;
+  width: 30px;
   filter: brightness(0.8) contrast(1.2);
   border: 1px solid #FF4500;
   border-radius: 50%;
-  padding: 3px;
+  padding: 5px;
   transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
 }
 .social-icon:hover {
@@ -102,25 +93,25 @@ nav a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 60px 10px 20px; /* Increased top padding for header */
+  padding: 80px 20px;
   opacity: 0;
   animation: fadeIn 1s ease forwards 2s;
 }
 .hero-content {
   background: rgba(26, 26, 26, 0.9);
-  padding: 15px;
+  padding: 40px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(255, 69, 0, 0.2);
   width: 100%;
   max-width: 500px;
 }
 .fomo {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 #slotsText, #countdownText {
-  font-size: 20px;
+  font-size: 32px;
   font-weight: 700;
-  margin: 8px 0;
+  margin: 10px 0;
   color: #fff;
 }
 .wallet-header {
@@ -128,22 +119,20 @@ nav a:hover {
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  margin: 8px 0;
+  margin: 10px 0;
 }
 #connectButton, #disconnectButton {
   background: #FF4500;
   color: #fff;
-  padding: 8px 15px;
+  padding: 10px 25px;
   border: 1px solid #FF6347;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 800;
   transition: background 0.3s ease, transform 0.1s ease, opacity 0.3s ease;
   opacity: 0;
   animation: fadeInButton 1s ease forwards 1.5s;
-  width: 100%;
-  max-width: 200px;
 }
 #connectButton:hover, #disconnectButton:hover {
   background: #E03E00;
@@ -161,41 +150,39 @@ nav a:hover {
   to { opacity: 1; }
 }
 #walletText, #resultText {
-  font-size: 10px;
+  font-size: 14px;
   margin: 5px 0;
   color: #ccc;
 }
 .fomo-message h3 {
-  font-size: 18px;
+  font-size: 28px;
   font-weight: 700;
   color: #fff;
-  margin: 8px 0;
+  margin: 10px 0;
 }
 .fomo-message p {
-  font-size: 14px;
+  font-size: 18px;
   color: #ccc;
   margin: 5px 0;
 }
 .whitelist-note {
-  font-size: 12px;
+  font-size: 16px;
   color: #ccc;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 .whitelist {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 #payButton {
   background: #FF4500;
   color: #fff;
-  padding: 8px 15px;
+  padding: 12px 24px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 800;
   transition: background 0.3s ease, transform 0.1s ease;
-  width: 100%;
-  margin-top: 10px;
 }
 #payButton:hover {
   background: #E03E00;
@@ -206,58 +193,62 @@ nav a:hover {
   cursor: not-allowed;
 }
 #whitelistForm {
-  margin: 15px 0;
-  padding: 8px;
+  margin: 20px 0;
+  padding: 15px;
   border: 1px solid #FF6347;
   border-radius: 5px;
 }
 #whitelistForm select {
-  padding: 6px;
+  padding: 10px;
   margin-bottom: 10px;
   background: #222;
   color: #fff;
   border: 1px solid #fff;
   border-radius: 5px;
   width: 100%;
-  font-size: 14px;
 }
 #exclusiveMessage {
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.4;
-  color: #FF4500;
-  font-weight: 700;
-  margin-bottom: 10px;
 }
 .content-section {
   position: relative;
   z-index: 1;
-  padding: 30px 10px;
+  padding: 60px 20px;
   background: rgba(26, 26, 26, 0.7);
   opacity: 0;
   animation: fadeIn 1s ease forwards 2.5s;
 }
 .content-section h2 {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   color: #fff;
 }
 .content-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  max-width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
   margin: 0 auto;
 }
+.about-grid {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+}
 .about-grid .content-item {
-  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 500px;
 }
 .about-image {
   width: 100%;
-  max-width: 250px;
+  max-width: 400px;
   border-radius: 10px;
   border: 2px solid #FF4500;
-  margin: 0 auto 15px;
+  margin: 0 auto 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .about-image:hover {
@@ -265,19 +256,12 @@ nav a:hover {
   box-shadow: 0 0 15px rgba(255, 69, 0, 0.5);
 }
 .tokenomics-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-.tokenomics-grid .content-item {
-  flex: 1;
-  min-width: 150px;
+  grid-template-columns: 1fr 1fr;
 }
 .pie-chart {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   background: conic-gradient(
     #FF4500 0% 35%,
@@ -293,8 +277,8 @@ nav a:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 60px;
-  height: 60px;
+  width: 120px;
+  height: 120px;
   background: #1a1a1a;
   border-radius: 50%;
   transform: translate(-50%, -50%);
@@ -305,12 +289,13 @@ nav a:hover {
   text-align: left;
 }
 .tokenomics-list li {
-  font-size: 12px;
+  font-size: 18px;
   color: #ccc;
-  margin: 5px 0;
+  margin: 15px 0;
 }
 .tokenomics-list ul {
-  padding-left: 10px;
+  list-style: none;
+  padding-left: 20px;
 }
 .tokenomics-label {
   font-weight: 700;
@@ -326,7 +311,7 @@ nav a:hover {
 }
 .audit-card {
   background: rgba(255, 69, 0, 0.1);
-  padding: 15px;
+  padding: 30px;
   border-radius: 10px;
   border: 1px solid transparent;
   border-image: linear-gradient(to right, #FF4500, #FF6347) 1;
@@ -338,28 +323,28 @@ nav a:hover {
 .audit-score {
   color: #FF4500;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 24px;
 }
 .audit-details {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin-top: 15px;
+  justify-content: space-between;
+  margin-top: 20px;
+  flex-wrap: wrap;
 }
 .audit-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 .audit-images {
   display: flex;
+  gap: 15px;
   flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
 }
 .audit-image {
   width: 100%;
-  max-width: 150px;
+  max-width: 250px;
   border-radius: 5px;
   border: 1px solid #FF4500;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -369,18 +354,19 @@ nav a:hover {
   box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
 }
 .audit-link {
+  display: inline-block;
   color: #FF4500;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .audit-link:hover {
   color: #fff;
 }
 .audit-link-text {
-  padding: 6px 12px;
+  padding: 8px 16px;
   border: 1px solid #FF4500;
   border-radius: 5px;
   transition: background 0.3s ease;
@@ -389,13 +375,12 @@ nav a:hover {
   background: #FF4500;
   color: #fff;
 }
-.audit Devils Night-logo-container {
+.audit-logo-container {
   display: flex;
   align-items: center;
-  margin-top: 10px;
 }
 .audit-logo {
-  width: 100px;
+  width: 160px;
   transition: transform 0.3s ease;
 }
 .audit-logo:hover {
@@ -404,21 +389,21 @@ nav a:hover {
 .audit-badge {
   background: #FF4500;
   color: #fff;
-  padding: 3px 6px;
+  padding: 5px 10px;
   border-radius: 5px;
-  font-size: 10px;
-  margin-left: 8px;
+  font-size: 14px;
+  margin-left: 10px;
 }
 .roadmap-timeline {
   position: relative;
-  max-width: 100%;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 15px 0;
+  padding: 20px 0;
 }
 .roadmap-timeline::before {
   content: '';
   position: absolute;
-  left: 10px;
+  left: 20px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -426,22 +411,22 @@ nav a:hover {
 }
 .roadmap-item {
   position: relative;
-  margin: 30px 0;
+  margin: 40px 0;
   display: flex;
   align-items: flex-start;
 }
 .roadmap-dot {
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
   background: #FF4500;
   border-radius: 50%;
-  border: 2px solid #1a1a1a;
-  margin-right: 10px;
+  border: 3px solid #1a1a1a;
+  margin-right: 20px;
   z-index: 1;
 }
 .roadmap-content {
   background: rgba(255, 69, 0, 0.1);
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
   border: 1px solid #FF6347;
   flex: 1;
@@ -451,8 +436,8 @@ nav a:hover {
 }
 .roadmap-content h3 {
   color: #FF4500;
-  font-size: 18px;
-  margin-bottom: 8px;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 .roadmap-content ul {
   list-style: none;
@@ -460,26 +445,26 @@ nav a:hover {
 }
 .roadmap-content li {
   color: #ccc;
-  font-size: 12px;
-  margin: 4px 0;
+  font-size: 16px;
+  margin: 5px 0;
 }
 @keyframes fadeInUp {
   to { opacity: 1; transform: translateY(0); }
 }
 .content-item {
   background: rgba(255, 69, 0, 0.1);
-  padding: 15px;
+  padding: 30px;
   border-radius: 10px;
   border: 1px solid #FF6347;
 }
 .content-item p {
-  font-size: 14px;
+  font-size: 18px;
   color: #ccc;
   line-height: 1.6;
 }
 .content-item a {
   color: #FF4500;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -489,12 +474,12 @@ nav a:hover {
 }
 .content-item img {
   width: 100%;
-  max-width: 250px;
+  max-width: 350px;
   border-radius: 5px;
 }
 .content-item .audit-logo {
-  width: 100px;
-  margin-top: 10px;
+  width: 160px;
+  margin-top: 15px;
 }
 #partners {
   animation-delay: 3s;
@@ -503,21 +488,21 @@ nav a:hover {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 40px;
 }
 .partner-item {
   background: rgba(255, 69, 0, 0.1);
-  padding: 15px;
+  padding: 20px;
   border-radius: 50%;
   border: 1px solid #FF6347;
 }
 .partner-item img[src="star_capital.png"] {
   background: rgba(255, 255, 255, 0.1);
-  padding: 8px;
+  padding: 10px;
   border-radius: 50%;
 }
 #partners img {
-  width: 120px;
+  width: 200px;
   filter: grayscale(50%);
   transition: filter 0.3s ease;
 }
@@ -526,89 +511,86 @@ nav a:hover {
 }
 #partners p {
   color: #ccc;
-  font-size: 16px;
-  margin-top: 20px;
+  font-size: 18px;
+  margin-top: 30px;
 }
 
 /* Mobile Responsive */
 @media (max-width: 600px) {
   header {
-    padding: 8px 10px;
-    height: 50px; /* Fixed height to prevent overlap */
-  }
-  #logo {
-    width: 50px;
-  }
-  nav {
-    top: 50px;
-  }
-  .social-icon {
-    width: 18px;
-    padding: 2px;
+    display: none; /* Hide header on mobile */
   }
   .hero {
-    padding: 70px 10px 20px; /* Increased top padding to clear header */
+    padding: 20px 10px; /* Reduced padding-top since no header */
+    min-height: auto;
   }
   .hero-content {
     padding: 15px;
   }
   #slotsText, #countdownText {
-    font-size: 18px;
+    font-size: 20px;
   }
   .wallet-header {
     margin: 8px 0;
   }
   #connectButton, #disconnectButton {
-    font-size: 13px;
-    padding: 7px 12px;
+    font-size: 14px;
+    padding: 8px 15px;
     max-width: 180px;
   }
   #walletText, #resultText {
-    font-size: 9px;
+    font-size: 10px;
   }
   .fomo-message h3 {
-    font-size: 16px;
+    font-size: 18px;
   }
   .fomo-message p {
-    font-size: 13px;
+    font-size: 14px;
   }
   .whitelist-note {
-    font-size: 11px;
+    font-size: 12px;
   }
   #whitelistForm {
-    padding: 7px;
+    margin: 15px 0;
+    padding: 8px;
   }
   #whitelistForm select {
-    font-size: 13px;
-    padding: 5px;
+    font-size: 14px;
+    padding: 6px;
   }
   #exclusiveMessage {
-    font-size: 13px;
-    margin-bottom: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
   }
   #payButton {
-    font-size: 13px;
-    padding: 7px 12px;
+    font-size: 14px;
+    padding: 8px 15px;
   }
   .content-section {
-    padding: 25px 10px;
+    padding: 30px 10px;
   }
   .content-section h2 {
-    font-size: 22px;
-    margin-bottom: 15px;
+    font-size: 24px;
+    margin-bottom: 20px;
   }
-  .content-item {
-    padding: 12px;
+  .content-grid {
+    grid-template-columns: 1fr;
   }
-  .content-item p {
-    font-size: 13px;
+  .about-grid .content-item {
+    min-height: auto;
   }
   .about-image {
-    max-width: 220px;
+    max-width: 250px;
   }
   .tokenomics-grid {
     flex-direction: row;
+    display: flex;
     align-items: center;
+    gap: 20px;
+  }
+  .tokenomics-grid .content-item {
+    flex: 1;
+    min-width: 150px;
   }
   .pie-chart {
     width: 100px;
@@ -626,39 +608,42 @@ nav a:hover {
     padding-left: 8px;
   }
   .audit-card {
-    padding: 12px;
+    padding: 15px;
   }
   .audit-score {
-    font-size: 16px;
+    font-size: 18px;
+  }
+  .audit-details {
+    flex-direction: column;
   }
   .audit-image {
-    max-width: 130px;
+    max-width: 150px;
   }
   .audit-logo {
-    width: 90px;
+    width: 100px;
   }
   .audit-badge {
-    font-size: 9px;
-    padding: 2px 5px;
+    font-size: 10px;
+    padding: 3px 6px;
   }
   .roadmap-timeline::before {
-    left: 8px;
+    left: 10px;
   }
   .roadmap-dot {
-    width: 10px;
-    height: 10px;
-    margin-right: 8px;
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
   }
   .roadmap-content {
-    padding: 8px;
+    padding: 10px;
   }
   .roadmap-content h3 {
-    font-size: 16px;
+    font-size: 18px;
   }
   .roadmap-content li {
-    font-size: 11px;
+    font-size: 12px;
   }
   #partners img {
-    width: 100px;
+    width: 120px;
   }
 }
