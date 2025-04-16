@@ -10,12 +10,22 @@
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
-  <video autoplay muted loop id="marsVideo"><source src="mars_orbit.mp4" type="video/mp4"></video>
+  <video autoplay muted loop playsinline id="marsVideo"><source src="mars_orbit.mp4" type="video/mp4"></video>
   <audio autoplay loop volume="0.2"><source src="space_ambient.mp3" type="audio/mpeg"></audio>
   <div id="particles-js"></div>
   <header>
+    <div class="hamburger-menu">
+      <div class="hamburger-icon">☰</div>
+      <nav id="nav-menu">
+        <a href="#about">About</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#audit">Audit</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#partners">Partners</a>
+      </nav>
+    </div>
     <img src="mars_logo.png" id="logo" alt="Mars Logo">
-    <nav>
+    <nav class="desktop-nav">
       <a href="#about">About</a>
       <a href="#tokenomics">Tokenomics</a>
       <a href="#audit">Audit</a>
