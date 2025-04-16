@@ -34,35 +34,36 @@ header {
   left: 0;
   width: 100%;
   z-index: 2;
-  padding: 15px 40px;
+  padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 20px;
   background: rgba(0, 0, 0, 0.9);
   opacity: 0;
   animation: fadeIn 1s ease forwards 1s;
 }
 #logo {
-  width: 100px;
+  width: 80px;
   opacity: 0.5;
   transition: transform 0.3s ease;
 }
 #logo:hover {
   transform: scale(1.1);
 }
-nav {
+.desktop-nav {
   display: flex;
   align-items: center;
 }
-nav a {
+.desktop-nav a {
   color: #fff;
-  margin: 0 15px;
+  margin: 0 10px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   transition: color 0.3s ease;
 }
-nav a:hover {
+.desktop-nav a:hover {
   color: #FF4500;
 }
 .social-link {
@@ -70,17 +71,51 @@ nav a:hover {
   align-items: center;
 }
 .social-icon {
-  width: 30px;
+  width: 24px;
   filter: brightness(0.8) contrast(1.2);
   border: 1px solid #FF4500;
   border-radius: 50%;
-  padding: 5px;
+  padding: 4px;
   transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
 }
 .social-icon:hover {
   transform: scale(1.2);
   filter: brightness(1.5) contrast(1.5);
   box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+}
+.hamburger-menu {
+  display: none;
+}
+.hamburger-icon {
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px;
+}
+#nav-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  flex-direction: column;
+  z-index: 3;
+}
+#nav-menu.active {
+  display: flex;
+}
+#nav-menu a {
+  color: #fff;
+  margin: 10px 0;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+#nav-menu a:hover {
+  color: #FF4500;
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
@@ -99,19 +134,19 @@ nav a:hover {
 }
 .hero-content {
   background: rgba(26, 26, 26, 0.9);
-  padding: 40px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(255, 69, 0, 0.2);
   width: 100%;
   max-width: 500px;
 }
 .fomo {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 #slotsText, #countdownText {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 700;
-  margin: 10px 0;
+  margin: 8px 0;
   color: #fff;
 }
 .wallet-header {
@@ -124,11 +159,11 @@ nav a:hover {
 #connectButton, #disconnectButton {
   background: #FF4500;
   color: #fff;
-  padding: 10px 25px;
+  padding: 8px 20px;
   border: 1px solid #FF6347;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   transition: background 0.3s ease, transform 0.1s ease, opacity 0.3s ease;
   opacity: 0;
@@ -150,39 +185,41 @@ nav a:hover {
   to { opacity: 1; }
 }
 #walletText, #resultText {
-  font-size: 14px;
+  font-size: 12px;
   margin: 5px 0;
   color: #ccc;
 }
 .fomo-message h3 {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 700;
   color: #fff;
-  margin: 10px 0;
+  margin: 8px 0;
 }
 .fomo-message p {
-  font-size: 18px;
+  font-size: 16px;
   color: #ccc;
   margin: 5px 0;
 }
 .whitelist-note {
-  font-size: 16px;
+  font-size: 14px;
   color: #ccc;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 .whitelist {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 #payButton {
   background: #FF4500;
   color: #fff;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   transition: background 0.3s ease, transform 0.1s ease;
+  width: 100%;
+  margin-top: 10px;
 }
 #payButton:hover {
   background: #E03E00;
@@ -193,13 +230,13 @@ nav a:hover {
   cursor: not-allowed;
 }
 #whitelistForm {
-  margin: 20px 0;
-  padding: 15px;
+  margin: 15px 0;
+  padding: 10px;
   border: 1px solid #FF6347;
   border-radius: 5px;
 }
 #whitelistForm select {
-  padding: 10px;
+  padding: 8px;
   margin-bottom: 10px;
   background: #222;
   color: #fff;
@@ -208,47 +245,39 @@ nav a:hover {
   width: 100%;
 }
 #exclusiveMessage {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.4;
 }
 .content-section {
   position: relative;
   z-index: 1;
-  padding: 60px 20px;
+  padding: 40px 15px;
   background: rgba(26, 26, 26, 0.7);
   opacity: 0;
   animation: fadeIn 1s ease forwards 2.5s;
 }
 .content-section h2 {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 700;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   color: #fff;
 }
 .content-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
-.about-grid {
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 40px;
-}
 .about-grid .content-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  min-height: 500px;
+  min-height: auto;
 }
 .about-image {
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
   border-radius: 10px;
   border: 2px solid #FF4500;
-  margin: 0 auto 20px;
+  margin: 0 auto 15px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .about-image:hover {
@@ -257,11 +286,12 @@ nav a:hover {
 }
 .tokenomics-grid {
   grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 .pie-chart {
   position: relative;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   background: conic-gradient(
     #FF4500 0% 35%,
@@ -277,8 +307,8 @@ nav a:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   background: #1a1a1a;
   border-radius: 50%;
   transform: translate(-50%, -50%);
@@ -289,13 +319,12 @@ nav a:hover {
   text-align: left;
 }
 .tokenomics-list li {
-  font-size: 18px;
+  font-size: 16px;
   color: #ccc;
-  margin: 15px 0;
+  margin: 10px 0;
 }
 .tokenomics-list ul {
-  list-style: none;
-  padding-left: 20px;
+  padding-left: 15px;
 }
 .tokenomics-label {
   font-weight: 700;
@@ -311,7 +340,7 @@ nav a:hover {
 }
 .audit-card {
   background: rgba(255, 69, 0, 0.1);
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   border: 1px solid transparent;
   border-image: linear-gradient(to right, #FF4500, #FF6347) 1;
@@ -323,28 +352,28 @@ nav a:hover {
 .audit-score {
   color: #FF4500;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
 }
 .audit-details {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  margin-top: 15px;
 }
 .audit-info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 .audit-images {
   display: flex;
-  gap: 15px;
   flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
 .audit-image {
   width: 100%;
-  max-width: 250px;
+  max-width: 200px;
   border-radius: 5px;
   border: 1px solid #FF4500;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -354,19 +383,18 @@ nav a:hover {
   box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
 }
 .audit-link {
-  display: inline-block;
   color: #FF4500;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 .audit-link:hover {
   color: #fff;
 }
 .audit-link-text {
-  padding: 8px 16px;
+  padding: 6px 12px;
   border: 1px solid #FF4500;
   border-radius: 5px;
   transition: background 0.3s ease;
@@ -378,9 +406,10 @@ nav a:hover {
 .audit-logo-container {
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
 .audit-logo {
-  width: 160px;
+  width: 120px;
   transition: transform 0.3s ease;
 }
 .audit-logo:hover {
@@ -389,21 +418,21 @@ nav a:hover {
 .audit-badge {
   background: #FF4500;
   color: #fff;
-  padding: 5px 10px;
+  padding: 4px 8px;
   border-radius: 5px;
-  font-size: 14px;
-  margin-left: 10px;
+  font-size: 12px;
+  margin-left: 8px;
 }
 .roadmap-timeline {
   position: relative;
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 15px 0;
 }
 .roadmap-timeline::before {
   content: '';
   position: absolute;
-  left: 20px;
+  left: 15px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -411,22 +440,22 @@ nav a:hover {
 }
 .roadmap-item {
   position: relative;
-  margin: 40px 0;
+  margin: 30px 0;
   display: flex;
   align-items: flex-start;
 }
 .roadmap-dot {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   background: #FF4500;
   border-radius: 50%;
-  border: 3px solid #1a1a1a;
-  margin-right: 20px;
+  border: 2px solid #1a1a1a;
+  margin-right: 15px;
   z-index: 1;
 }
 .roadmap-content {
   background: rgba(255, 69, 0, 0.1);
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
   border: 1px solid #FF6347;
   flex: 1;
@@ -436,8 +465,8 @@ nav a:hover {
 }
 .roadmap-content h3 {
   color: #FF4500;
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 .roadmap-content ul {
   list-style: none;
@@ -445,26 +474,26 @@ nav a:hover {
 }
 .roadmap-content li {
   color: #ccc;
-  font-size: 16px;
-  margin: 5px 0;
+  font-size: 14px;
+  margin: 4px 0;
 }
 @keyframes fadeInUp {
   to { opacity: 1; transform: translateY(0); }
 }
 .content-item {
   background: rgba(255, 69, 0, 0.1);
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   border: 1px solid #FF6347;
 }
 .content-item p {
-  font-size: 18px;
+  font-size: 16px;
   color: #ccc;
   line-height: 1.6;
 }
 .content-item a {
   color: #FF4500;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -474,12 +503,12 @@ nav a:hover {
 }
 .content-item img {
   width: 100%;
-  max-width: 350px;
+  max-width: 300px;
   border-radius: 5px;
 }
 .content-item .audit-logo {
-  width: 160px;
-  margin-top: 15px;
+  width: 120px;
+  margin-top: 10px;
 }
 #partners {
   animation-delay: 3s;
@@ -488,21 +517,21 @@ nav a:hover {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 20px;
 }
 .partner-item {
   background: rgba(255, 69, 0, 0.1);
-  padding: 20px;
+  padding: 15px;
   border-radius: 50%;
   border: 1px solid #FF6347;
 }
 .partner-item img[src="star_capital.png"] {
   background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
+  padding: 8px;
   border-radius: 50%;
 }
 #partners img {
-  width: 200px;
+  width: 150px;
   filter: grayscale(50%);
   transition: filter 0.3s ease;
 }
@@ -511,17 +540,24 @@ nav a:hover {
 }
 #partners p {
   color: #ccc;
-  font-size: 18px;
-  margin-top: 30px;
+  font-size: 16px;
+  margin-top: 20px;
 }
 
 /* Mobile Responsive */
 @media (max-width: 600px) {
   header {
-    display: none; /* Hide header on mobile */
+    display: none; /* Hide default header */
+  }
+  .hamburger-menu {
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
   }
   .hero {
-    padding: 20px 10px; /* Reduced padding-top since no header */
+    padding: 20px 10px;
     min-height: auto;
   }
   .hero-content {
@@ -551,7 +587,6 @@ nav a:hover {
     font-size: 12px;
   }
   #whitelistForm {
-    margin: 15px 0;
     padding: 8px;
   }
   #whitelistForm select {
@@ -576,45 +611,38 @@ nav a:hover {
   .content-grid {
     grid-template-columns: 1fr;
   }
-  .about-grid .content-item {
-    min-height: auto;
-  }
   .about-image {
     max-width: 250px;
   }
   .tokenomics-grid {
-    flex-direction: row;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 20px;
-  }
-  .tokenomics-grid .content-item {
-    flex: 1;
-    min-width: 150px;
+    gap: 10px;
   }
   .pie-chart {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
   }
   .pie-chart::before {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
+  }
+  .tokenomics-list {
+    text-align: center;
   }
   .tokenomics-list li {
-    font-size: 11px;
-    margin: 4px 0;
+    font-size: 12px;
+    margin: 5px 0;
   }
   .tokenomics-list ul {
-    padding-left: 8px;
+    padding-left: 0;
   }
   .audit-card {
     padding: 15px;
   }
   .audit-score {
     font-size: 18px;
-  }
-  .audit-details {
-    flex-direction: column;
   }
   .audit-image {
     max-width: 150px;
