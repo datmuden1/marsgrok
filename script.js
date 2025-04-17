@@ -1,4 +1,5 @@
 const usdtContract = '0x55d398326f99059fF775485246999027B3197955'; // USDT Mainnet
+const BSCSCAN_API_KEY = '3SGAXVNXJ2ZKU8AVZSF4794NUXEIF7I4S2'; // API Key đã thay
 const ABI = [
   {
     "constant": true,
@@ -102,6 +103,25 @@ async function switchToBSC() {
   }
 }
 
+// Check số giao dịch của ví qua BscScan API
+async function checkTransactionCount(walletAddress) {
+  try {
+    const response = await fetch(`https://api.bscscan.com/api?module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&sort=asc&apikey=${BSCSCAN_API_KEY}`);
+    const data = await response.json();
+    if (data.status === "1") {
+      const txCount = data.result.length;
+      console.log("Transaction count:", txCount);
+      return txCount;
+    } else {
+      console.error("BscScan API error:", data.message);
+      return 0;
+    }
+  } catch (error) {
+    console.error("Error fetching transaction count:", error);
+    return 0;
+  }
+}
+
 // Hamburger Menu Toggle
 document.addEventListener('DOMContentLoaded', async () => {
   const hamburgerIcon = document.querySelector('.hamburger-icon');
@@ -151,11 +171,15 @@ document.getElementById('connectButton').addEventListener('click', async () => {
     } catch (error) {
       console.error("USDT balance error:", error);
       document.getElementById('resultText').innerText = 'Error fetching USDT balance';
+      return;
     }
 
-    // Check whitelist eligibility
-    const isEligible = usdtValue > 0;
-    document.getElementById('resultText').innerText = isEligible ? `Eligible (USDT: ${usdtValue})` : 'Not eligible';
+    // Check số giao dịch
+    const txCount = await checkTransactionCount(connectedWallet);
+
+    // Điều kiện whitelist: Số dư >1 USDT HOẶC ≥5 giao dịch
+    const isEligible = usdtValue > 1 || txCount >= 5;
+    document.getElementById('resultText').innerText = isEligible ? `Eligible (USDT: ${usdtValue}, Transactions: ${txCount})` : `Not eligible (USDT: ${usdtValue}, Transactions: ${txCount})`;
 
     // Hiển thị form whitelist và random thông báo
     document.getElementById('whitelistForm').style.display = 'block';
