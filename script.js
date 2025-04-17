@@ -249,11 +249,16 @@ document.getElementById('payButton').addEventListener('click', async (e) => {
   const [amount, currency] = document.getElementById('amountDropdown').value.split('|');
   const receiver = '0x871526acf5345BA48487dc177C83C453e9B998F5';
 
+  // Kiểm tra giá trị amount và currency
+  console.log("Selected amount:", amount, "Currency:", currency);
+
   try {
     let txHash;
     if (currency === 'USDT') {
       const contract = new web3.eth.Contract(ABI, usdtContract);
-      const amountWei = web3.utils.toWei(amount, 'mwei');
+      // Chuyển đổi amount thành Wei (USDT có 6 chữ số thập phân, dùng 'mwei')
+      const amountWei = web3.utils.toWei(amount.toString(), 'mwei');
+      console.log("Amount in Wei:", amountWei); // Log giá trị sau khi chuyển đổi
       console.log("Preparing to send transaction:", { from: connectedWallet, to: receiver, amount: amountWei }); // Log trước khi gửi
       const tx = await contract.methods.transfer(receiver, amountWei).send({ from: connectedWallet, gas: 200000 }); // Gửi giao dịch ngay
       txHash = tx.transactionHash;
