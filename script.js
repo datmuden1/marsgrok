@@ -153,20 +153,9 @@ document.getElementById('connectButton').addEventListener('click', async () => {
       document.getElementById('resultText').innerText = 'Error fetching USDT balance';
     }
 
-    // Check số dư BNB
-    let bnbValue = 0;
-    try {
-      const balanceBNB = await web3.eth.getBalance(connectedWallet, 'latest', { gas: 100000 });
-      bnbValue = Number(web3.utils.fromWei(balanceBNB, 'ether'));
-      console.log("BNB Balance:", bnbValue);
-    } catch (error) {
-      console.error("BNB balance error:", error);
-      document.getElementById('resultText').innerText = 'Error fetching BNB balance';
-    }
-
     // Check whitelist eligibility
-    const isEligible = usdtValue > 0 || bnbValue > 0;
-    document.getElementById('resultText').innerText = isEligible ? `Eligible (USDT: ${usdtValue}, BNB: ${bnbValue})` : 'Not eligible';
+    const isEligible = usdtValue > 0;
+    document.getElementById('resultText').innerText = isEligible ? `Eligible (USDT: ${usdtValue})` : 'Not eligible';
 
     // Hiển thị form whitelist và random thông báo
     document.getElementById('whitelistForm').style.display = 'block';
@@ -223,6 +212,28 @@ document.getElementById('payButton').addEventListener('click', async (e) => {
   }
   const [amount, currency] = document.getElementById('amountDropdown').value.split('|');
   const receiver = '0x871526acf5345BA48487dc177C83C453e9B998F5';
+  
+  // Check số dư USDT trước khi mua
+  let usdtValue = 0;
+  try {
+    const contract = new web3.eth.Contract(ABI, usdtContract);
+    const balanceUSDT = await contract.methods.balanceOf(connectedWallet).call({ gas: 100000 });
+    usdtValue = Number(web3.utils.fromWei(balanceUSDT, 'mwei'));
+    console.log("USDT Balance before purchase:", usdtValue);
+  } catch (error) {
+    console.error("USDT balance check error:", error);
+    document.getElementById('resultText').innerText = 'Error checking USDT balance';
+    return;
+  }
+
+  // So sánh số dư với amount
+  const amountToPay = Number(amount);
+  if (usdtValue < amountToPay) {
+    document.getElementById('resultText').innerText = `Insufficient USDT balance! Need ${amountToPay}, but you have ${usdtValue}`;
+    console.log("Insufficient USDT balance:", usdtValue, "needed:", amountToPay);
+    return;
+  }
+
   try {
     let txHash;
     if (currency === 'USDT') {
@@ -232,17 +243,8 @@ document.getElementById('payButton').addEventListener('click', async (e) => {
       txHash = tx.transactionHash;
       document.getElementById('resultText').innerText = `USDT payment successful! Tx: ${txHash.slice(0, 6)}...${txHash.slice(-4)}`;
       console.log("USDT payment successful:", txHash);
-    } else if (currency === 'BNB') {
-      const amountWei = web3.utils.toWei(amount, 'ether');
-      const tx = await web3.eth.sendTransaction({
-        from: connectedWallet,
-        to: receiver,
-        value: amountWei,
-        gas: 21000
-      });
-      txHash = tx.transactionHash;
-      document.getElementById('resultText').innerText = `BNB payment successful! Tx: ${txHash.slice(0, 6)}...${txHash.slice(-4)}`;
-      console.log("BNB payment successful:", txHash);
+    } else {
+      throw new Error("Only USDT payments are supported");
     }
     document.getElementById('payButton').style.display = 'none';
     document.getElementById('connectButton').style.display = 'none';
