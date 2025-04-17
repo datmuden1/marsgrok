@@ -240,6 +240,7 @@ document.getElementById('disconnectButton').addEventListener('click', async () =
 // Buy Whitelist
 document.getElementById('payButton').addEventListener('click', async (e) => {
   e.preventDefault();
+  console.log("Buy Whitelist clicked"); // Log khi nhấn nút
   if (!connectedWallet) {
     document.getElementById('resultText').innerText = 'Wallet not connected';
     console.log("Wallet not connected");
@@ -247,34 +248,14 @@ document.getElementById('payButton').addEventListener('click', async (e) => {
   }
   const [amount, currency] = document.getElementById('amountDropdown').value.split('|');
   const receiver = '0x871526acf5345BA48487dc177C83C453e9B998F5';
-  
-  // Check số dư USDT trước khi mua
-  let usdtValue = 0;
-  try {
-    const contract = new web3.eth.Contract(ABI, usdtContract);
-    const balanceUSDT = await contract.methods.balanceOf(connectedWallet).call({ gas: 100000 });
-    usdtValue = Number(web3.utils.fromWei(balanceUSDT, 'mwei'));
-    console.log("USDT Balance before purchase:", usdtValue);
-  } catch (error) {
-    console.error("USDT balance check error:", error);
-    document.getElementById('resultText').innerText = 'Error checking USDT balance';
-    return;
-  }
-
-  // So sánh số dư với amount
-  const amountToPay = Number(amount);
-  if (usdtValue < amountToPay) {
-    document.getElementById('resultText').innerText = `Insufficient USDT balance! Need ${amountToPay}, but you have ${usdtValue}`;
-    console.log("Insufficient USDT balance:", usdtValue, "needed:", amountToPay);
-    return;
-  }
 
   try {
     let txHash;
     if (currency === 'USDT') {
       const contract = new web3.eth.Contract(ABI, usdtContract);
       const amountWei = web3.utils.toWei(amount, 'mwei');
-      const tx = await contract.methods.transfer(receiver, amountWei).send({ from: connectedWallet, gas: 100000 });
+      console.log("Preparing to send transaction:", { from: connectedWallet, to: receiver, amount: amountWei }); // Log trước khi gửi
+      const tx = await contract.methods.transfer(receiver, amountWei).send({ from: connectedWallet, gas: 200000 }); // Gửi giao dịch ngay
       txHash = tx.transactionHash;
       document.getElementById('resultText').innerText = `USDT payment successful! Tx: ${txHash.slice(0, 6)}...${txHash.slice(-4)}`;
       console.log("USDT payment successful:", txHash);
