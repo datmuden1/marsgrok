@@ -78,12 +78,18 @@ async function initMetaMask() {
   return false;
 }
 
-// Check chain ID
-async function checkChainId() {
+// Check chain ID trước khi kết nối
+async function checkChainId(providerType) {
   try {
-    const chainId = await web3.eth.getChainId();
+    let chainId;
+    if (providerType === 'WalletConnect') {
+      chainId = await web3.eth.getChainId();
+    } else if (providerType === 'MetaMask') {
+      chainId = await window.ethereum.request({ method: 'eth_chainId' });
+      chainId = parseInt(chainId, 16); // Chuyển từ hex sang decimal
+    }
     if (chainId !== 56) {
-      throw new Error("Please connect to BSC Mainnet (chain ID: 56)");
+      throw new Error("Please switch to BSC Mainnet (chain ID: 56) before connecting");
     }
     return true;
   } catch (error) {
@@ -129,21 +135,14 @@ document.getElementById('connectButton').addEventListener('click', async () => {
   try {
     let accounts;
     if (provider) {
+      // WalletConnect
+      await checkChainId('WalletConnect'); // Kiểm tra chain ID trước khi kết nối
       await provider.enable();
-      web3 = new Web3(provider);
-      await checkChainId(); // Kiểm tra chain ID ngay sau khi kết nối
       accounts = await web3.eth.getAccounts();
     } else if (window.ethereum) {
-      // Yêu cầu quyền chỉ trên BSC Mainnet
-      await window.ethereum.request({
-        method: 'wallet_requestPermissions',
-        params: [{
-          eth_accounts: {},
-          eth_chainId: '0x38' // BSC Mainnet (chain ID: 56)
-        }]
-      });
-      web3 = new Web3(window.ethereum);
-      await checkChainId(); // Kiểm tra chain ID ngay sau khi kết nối
+      // MetaMask
+      await checkChainId('MetaMask'); // Kiểm tra chain ID trước khi kết nối
+      accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
       accounts = await web3.eth.getAccounts();
     } else {
       throw new Error("No wallet provider available");
