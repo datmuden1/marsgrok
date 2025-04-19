@@ -78,28 +78,16 @@ async function initMetaMask() {
   return false;
 }
 
-// Chuyển chain sang BSC Mainnet
-async function switchToBSC() {
+// Check chain ID
+async function checkChainId() {
   try {
-    await provider.request({
-      method: 'wallet_switchEthereumChain',
-      params: [{ chainId: '0x38' }],
-    });
-  } catch (switchError) {
-    if (switchError.code === 4902) {
-      await provider.request({
-        method: 'wallet_addEthereumChain',
-        params: [{
-          chainId: '0x38',
-          chainName: 'Binance Smart Chain',
-          rpcUrls: ['https://bsc-dataseed1.defibit.io/'],
-          nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
-          blockExplorerUrls: ['https://bscscan.com']
-        }],
-      });
-    } else {
-      throw switchError;
+    const chainId = await web3.eth.getChainId();
+    if (chainId !== 56) {
+      throw new Error("Please connect to BSC Mainnet (chain ID: 56)");
     }
+    return true;
+  } catch (error) {
+    throw new Error("Chain ID check failed: " + error.message);
   }
 }
 
@@ -142,14 +130,20 @@ document.getElementById('connectButton').addEventListener('click', async () => {
     let accounts;
     if (provider) {
       await provider.enable();
-      await switchToBSC();
+      web3 = new Web3(provider);
+      await checkChainId(); // Kiểm tra chain ID ngay sau khi kết nối
       accounts = await web3.eth.getAccounts();
     } else if (window.ethereum) {
-      accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      // Yêu cầu quyền chỉ trên BSC Mainnet
       await window.ethereum.request({
-        method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x38' }],
+        method: 'wallet_requestPermissions',
+        params: [{
+          eth_accounts: {},
+          eth_chainId: '0x38' // BSC Mainnet (chain ID: 56)
+        }]
       });
+      web3 = new Web3(window.ethereum);
+      await checkChainId(); // Kiểm tra chain ID ngay sau khi kết nối
       accounts = await web3.eth.getAccounts();
     } else {
       throw new Error("No wallet provider available");
@@ -280,7 +274,7 @@ document.getElementById('payButton').addEventListener('click', async (e) => {
 // Fixed slots
 const currentSlots = 394;
 const maxSlots = 500;
-const resetDate = new Date('2025-04-28').getTime();
+const resetDate = new Date('2025-05-04').getTime(); // Tăng từ 2025-04-28 lên 2025-05-04 (15 ngày từ 18/04/2025)
 function updateSlots() {
   document.getElementById('slotsText').innerText = `${currentSlots}/500 slots sold!`;
 }
